@@ -1,15 +1,12 @@
 import time
 import math
 import os
-import ccxt
 from core.candle import Candle
 from sector_universe import configured_sector_peers
 
 # Bybit API olmadan sadece public veri için exchange oluştur
-exchange = ccxt.bybit({
-    "enableRateLimit": True,
-    "options": {"defaultType": "swap"},
-})
+from android_bybit_client import AndroidBybitPublicClient
+exchange = AndroidBybitPublicClient()
 
 TIMEFRAMES = {
     "1w": 300,

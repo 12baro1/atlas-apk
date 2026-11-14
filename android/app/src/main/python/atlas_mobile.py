@@ -8,6 +8,7 @@ _runtime = None
 def set_data_dir(path):
     os.makedirs(path, exist_ok=True)
     os.environ["HOME"] = path
+    os.environ["ATLAS_ANDROID"] = "1"
     os.environ["XDG_CACHE_HOME"] = os.path.join(path, "cache")
     os.makedirs(os.environ["XDG_CACHE_HOME"], exist_ok=True)
     os.chdir(path)

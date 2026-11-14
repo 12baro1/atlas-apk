@@ -46,9 +46,9 @@ jobs:
           root = Path("android/app/src/main/python")
           data_file = root / "data_engine.py"
           source = data_file.read_text(encoding="utf-8")
-          source = source.replace("import ccxt\\n", "")
-          ccxt_block = 'exchange = ccxt.bybit({\\n    "enableRateLimit": True,\\n    "options": {"defaultType": "swap"},\\n})'
-          android_block = "from android_bybit_client import AndroidBybitPublicClient\\nexchange = AndroidBybitPublicClient()"
+          source = source.replace("import ccxt\n", "")
+          ccxt_block = 'exchange = ccxt.bybit({\n    "enableRateLimit": True,\n    "options": {"defaultType": "swap"},\n})'
+          android_block = "from android_bybit_client import AndroidBybitPublicClient\nexchange = AndroidBybitPublicClient()"
           if ccxt_block not in source:
               raise SystemExit("Expected CCXT client block not found in data_engine.py")
           data_file.write_text(source.replace(ccxt_block, android_block), encoding="utf-8")

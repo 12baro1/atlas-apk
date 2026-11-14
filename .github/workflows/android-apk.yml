@@ -25,6 +25,7 @@ jobs:
       - name: Copy Atlas analysis engine into the app
         run: |
           mkdir -p android/app/src/main/python
+          find android/app/src/main/python -mindepth 1 -maxdepth 1 ! -name atlas_mobile.py -exec rm -rf {} +
           rsync -a --prune-empty-dirs \
             --exclude='ai/***' \
             --exclude='tests/***' \
@@ -64,7 +65,9 @@ jobs:
           java-version: "17"
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: platform-tools
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4

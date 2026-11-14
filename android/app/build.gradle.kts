@@ -30,7 +30,6 @@ chaquopy {
     defaultConfig {
         version = "3.11"
         pip {
-            install("ccxt")
             install("numpy")
             install("pandas")
             install("requests")
